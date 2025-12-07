@@ -1,1 +1,1 @@
-web: cd backend_python && gunicorn app:app
+web: gunicorn --chdir backend_python app:app
