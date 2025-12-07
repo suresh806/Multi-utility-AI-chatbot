@@ -21,26 +21,15 @@ from database import db
 db.init_app(app)
 jwt = JWTManager(app)
 
-# Configure CORS with more permissive settings for development
-frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:3000')
-cors_origins = [
-    frontend_url,
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'http://127.0.0.1:3000',
-    'http://127.0.0.1:3001'
-]
-
-# Add Render frontend URL if it exists
-render_url = os.getenv('RENDER_EXTERNAL_URL')
-if render_url:
-    cors_origins.append(render_url)
-
+# Configure CORS - Accept all origins in production
 CORS(app, 
-     origins=cors_origins,
-     supports_credentials=True,
-     allow_headers=['Content-Type', 'Authorization'],
-     methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'])
+     resources={r"/api/*": {
+         "origins": ["*"],
+         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+         "allow_headers": ["Content-Type", "Authorization"],
+         "supports_credentials": False
+     }},
+     send_wildcard=True)
 
 # Models
 from models import User, Message, ChatHistory
