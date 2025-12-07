@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+  ignore = "git diff --quiet $COMMIT_PARENT $COMMIT -- backend_python/"
+
+[build.environment]
+  NODE_VERSION = "18"
+  CI = "false"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://multi-utility-ai-chatbot-1.onrender.com/api/:splat"
+  status = 200
+  force = true
