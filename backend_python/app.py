@@ -22,8 +22,22 @@ db.init_app(app)
 jwt = JWTManager(app)
 
 # Configure CORS with more permissive settings for development
+frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:3000')
+cors_origins = [
+    frontend_url,
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:3001'
+]
+
+# Add Render frontend URL if it exists
+render_url = os.getenv('RENDER_EXTERNAL_URL')
+if render_url:
+    cors_origins.append(render_url)
+
 CORS(app, 
-     origins=[os.getenv('FRONTEND_URL', 'http://localhost:3000'), 'http://localhost:3001'],
+     origins=cors_origins,
      supports_credentials=True,
      allow_headers=['Content-Type', 'Authorization'],
      methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'])
@@ -62,7 +76,7 @@ def internal_error(error):
 if __name__ == '__main__':
     app.run(
         debug=os.getenv('FLASK_ENV', 'development') == 'development',
-        host='127.0.0.1',
-        port=5000,
+        host=os.getenv('SERVER_HOST', '0.0.0.0'),
+        port=int(os.getenv('SERVER_PORT', 5000)),
         use_reloader=False
     )
