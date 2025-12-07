@@ -7,7 +7,6 @@ import {
   Cpu,
   Moon,
   Sun,
-  Check,
   ChevronDown,
   ChevronUp,
   Zap,

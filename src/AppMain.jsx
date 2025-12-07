@@ -7,7 +7,7 @@ import "./AppNew.css";
 import "./styles/Modules.css";
 import "./styles/Auth.css";
 import {
-  Bot, UserPlus, LogIn, LogOut, Menu, X, User, Lock
+  LogIn, LogOut, Menu, X
 } from "lucide-react";
 import SmartServicesModule from "./SmartServicesModule.jsx";
 import GeneralQAModule from "./modules/GeneralQAModule.jsx";
@@ -21,21 +21,6 @@ const LS_CURRENT = "mui_current_user";
 
 const uid = () => Math.random().toString(36).slice(2, 9);
 const nowISO = () => new Date().toISOString();
-
-function mockLLMTextReply(q) {
-  if (!q) return "I see you sent an image";
-  if (/hello|hi|vanakkam/i.test(q)) return "Vanakkam! How can I help today?";
-  if (/joke/i.test(q)) return "Why do programmers prefer dark mode? Because light attracts bugs!";
-  return `Demo reply for: "${q}". (In production connect an LLM to generate rich answers.)`;
-}
-
-async function explainImage(dataUrl) {
-  const img = new Image();
-  img.src = dataUrl;
-  await img.decode();
-  const w = img.naturalWidth, h = img.naturalHeight;
-  return `Image detected • ${w}x${h}px.\n\nType your question about the image and press Send.`;
-}
 
 const injectCSS = () => {
   const css = `.dark-mode { background: #0f1720; color: #eef2ff; }

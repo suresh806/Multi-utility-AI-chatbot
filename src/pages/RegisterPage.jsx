@@ -180,7 +180,7 @@ export default function RegisterPage() {
         </form>
 
         <p className="auth-footer">
-          Already have an account? <a href="#" onClick={() => navigate("/login")}>Sign in</a>
+          Already have an account? <button type="button" onClick={() => navigate("/login")} style={{ background: 'none', border: 'none', color: '#3b82f6', textDecoration: 'underline', cursor: 'pointer', padding: 0, font: 'inherit' }}>Sign in</button>
         </p>
       </div>
     </div>

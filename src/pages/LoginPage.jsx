@@ -121,7 +121,7 @@ export default function LoginPage() {
         </form>
 
         <p className="auth-footer">
-          Don't have an account? <a href="#" onClick={() => navigate("/register")}>Sign up</a>
+          Don't have an account? <button type="button" onClick={() => navigate("/register")} style={{ background: 'none', border: 'none', color: '#3b82f6', textDecoration: 'underline', cursor: 'pointer', padding: 0, font: 'inherit' }}>Sign up</button>
         </p>
       </div>
     </div>
