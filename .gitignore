@@ -1,13 +1,14 @@
 #frontend
 node_modules/
-.env
 build/
+.env
 
 #backend
 backend_python/venv/
 backend_python/__pycache__/
 backend_python/instance/
-backend_python/.env
+backend_python/Lib/
 
 #System files
 *.pyc
+__pycache__/
