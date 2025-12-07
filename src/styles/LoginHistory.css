@@ -1,0 +1,243 @@
+/* Login History Component Styles */
+
+.history-container {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(139, 92, 246, 0.05));
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+  max-width: 600px;
+}
+
+.dark-mode .history-container {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(139, 92, 246, 0.08));
+  border-color: rgba(0, 212, 255, 0.15);
+}
+
+.light-mode .history-container {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.03), rgba(139, 92, 246, 0.03));
+  border-color: rgba(0, 212, 255, 0.2);
+}
+
+.history-header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+  padding-bottom: 16px;
+}
+
+.history-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #00d4ff;
+}
+
+.light-mode .history-header h3 {
+  color: #0099cc;
+}
+
+.history-subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.light-mode .history-subtitle {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.history-empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  font-style: italic;
+}
+
+.light-mode .history-empty {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: rgba(0, 212, 255, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid #00d4ff;
+  transition: all 0.3s ease;
+}
+
+.light-mode .history-item {
+  background: rgba(0, 212, 255, 0.08);
+  border-left-color: #0099cc;
+}
+
+.history-item:hover {
+  background: rgba(0, 212, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.history-item-left {
+  flex-shrink: 0;
+}
+
+.history-provider {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.15);
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+.light-mode .history-provider {
+  background: rgba(0, 212, 255, 0.2);
+}
+
+.provider-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-item-center {
+  flex: 1;
+  min-width: 0;
+}
+
+.history-provider-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00d4ff;
+  margin-bottom: 4px;
+}
+
+.light-mode .history-provider-name {
+  color: #0099cc;
+}
+
+.history-timestamp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.light-mode .history-timestamp {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.history-item-right {
+  flex-shrink: 0;
+}
+
+.history-badge {
+  display: inline-block;
+  background: rgba(139, 92, 246, 0.3);
+  color: #bb5cf6;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.light-mode .history-badge {
+  background: rgba(139, 92, 246, 0.2);
+  color: #9333ea;
+}
+
+.history-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(139, 92, 246, 0.05);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.light-mode .history-footer {
+  background: rgba(139, 92, 246, 0.08);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.history-footer p {
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .history-container {
+    padding: 16px;
+    margin: 16px 0;
+  }
+
+  .history-header h3 {
+    font-size: 16px;
+  }
+
+  .history-item {
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .history-provider {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .history-provider-name {
+    font-size: 13px;
+  }
+
+  .history-timestamp {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-container {
+    padding: 12px;
+    margin: 12px 0;
+  }
+
+  .history-item {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .history-provider {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .history-provider-name {
+    font-size: 12px;
+  }
+
+  .history-badge {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+
+  .history-footer {
+    font-size: 11px;
+    gap: 4px;
+  }
+}

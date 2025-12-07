@@ -1,0 +1,320 @@
+/* Professional Theme Colors */
+:root {
+  /* Primary Colors */
+  --primary-50: #e6f1ff;
+  --primary-100: #cce3ff;
+  --primary-200: #99c7ff;
+  --primary-300: #66abff;
+  --primary-400: #338fff;
+  --primary-500: #0073ff;
+  --primary-600: #005ccc;
+  --primary-700: #004599;
+  --primary-800: #002e66;
+  --primary-900: #001733;
+
+  /* Neutral Colors */
+  --neutral-50: #f8f9fa;
+  --neutral-100: #f1f3f5;
+  --neutral-200: #e9ecef;
+  --neutral-300: #dee2e6;
+  --neutral-400: #ced4da;
+  --neutral-500: #adb5bd;
+  --neutral-600: #868e96;
+  --neutral-700: #495057;
+  --neutral-800: #343a40;
+  --neutral-900: #212529;
+
+  /* Success Colors */
+  --success-100: #d4edda;
+  --success-500: #28a745;
+  --success-700: #1e7e34;
+
+  /* Error Colors */
+  --error-100: #f8d7da;
+  --error-500: #dc3545;
+  --error-700: #bd2130;
+
+  /* Warning Colors */
+  --warning-100: #fff3cd;
+  --warning-500: #ffc107;
+  --warning-700: #d39e00;
+
+  /* Info Colors */
+  --info-100: #cff4fc;
+  --info-500: #0dcaf0;
+  --info-700: #0aa2c0;
+
+  /* Theme Specific */
+  --background-light: var(--neutral-50);
+  --background-dark: #0f1720;
+  --text-light: var(--neutral-900);
+  --text-dark: var(--neutral-50);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+.light-mode {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+/* Layout Components */
+.sidebar {
+  background-color: var(--neutral-50);
+  border-right: 1px solid var(--neutral-200);
+  transition: width 0.3s ease;
+}
+
+.dark-mode .sidebar {
+  background-color: #161f2e;
+  border-color: #2a3441;
+}
+
+.sidebar-btn {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.sidebar-btn:hover {
+  background-color: var(--primary-50);
+  border-color: var(--primary-100);
+}
+
+.dark-mode .sidebar-btn:hover {
+  background-color: #1a2433;
+  border-color: #2a3441;
+}
+
+.sidebar-btn.active {
+  background-color: var(--primary-50);
+  border-color: var(--primary-100);
+  color: var(--primary-600);
+  font-weight: 600;
+}
+
+.dark-mode .sidebar-btn.active {
+  background-color: #1a2433;
+  border-color: var(--primary-700);
+  color: var(--primary-300);
+}
+
+/* Chat Components */
+.chat-bubble {
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 85%;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.chat-bubble:hover {
+  transform: translateY(-1px);
+}
+
+.chat-bubble.user {
+  background-color: var(--primary-500);
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-bubble.bot {
+  background-color: var(--neutral-100);
+  color: var(--neutral-900);
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+}
+
+.dark-mode .chat-bubble.bot {
+  background-color: #1a2433;
+  color: var(--neutral-100);
+}
+
+/* Card Styles */
+.card {
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark-mode .card {
+  background-color: #161f2e;
+  border-color: #2a3441;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Input Styles */
+.form-control {
+  border: 1px solid var(--neutral-300);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .form-control {
+  background-color: #1a2433;
+  border-color: #2a3441;
+  color: var(--neutral-100);
+}
+
+.form-control:focus {
+  border-color: var(--primary-400);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.dark-mode .form-control:focus {
+  border-color: var(--primary-600);
+  box-shadow: 0 0 0 3px rgba(0,115,255,0.2);
+}
+
+/* Button Styles */
+.btn {
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-500);
+  border-color: var(--primary-500);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-600);
+  border-color: var(--primary-600);
+}
+
+.dark-mode .btn-primary {
+  background-color: var(--primary-600);
+  border-color: var(--primary-600);
+}
+
+.btn-outline-primary {
+  color: var(--primary-500);
+  border-color: var(--primary-500);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-500);
+  color: white;
+}
+
+.dark-mode .btn-outline-primary {
+  color: var(--primary-300);
+  border-color: var(--primary-300);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-300);
+  border-radius: 4px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: var(--neutral-700);
+}
+
+/* Avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+}
+
+/* Toast/Alert Styles */
+.toast {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.alert {
+  border-radius: 8px;
+  border: none;
+}
+
+.alert-success {
+  background-color: var(--success-100);
+  color: var(--success-700);
+}
+
+.alert-danger {
+  background-color: var(--error-100);
+  color: var(--error-700);
+}
+
+.alert-warning {
+  background-color: var(--warning-100);
+  color: var(--warning-700);
+}
+
+.alert-info {
+  background-color: var(--info-100);
+  color: var(--info-700);
+}
+
+/* Code Block Styles */
+pre {
+  background-color: var(--neutral-100);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.dark-mode pre {
+  background-color: #1a2433;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1000;
+    height: 100vh;
+  }
+  
+  .chat-bubble {
+    max-width: 95%;
+  }
+}
