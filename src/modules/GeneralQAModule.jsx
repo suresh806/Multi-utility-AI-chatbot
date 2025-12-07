@@ -165,7 +165,7 @@ export default function GeneralQAModule({ darkMode = false }) {
   const getAIResponse = async (userMessage, imageData = null) => {
     try {
       const token = localStorage.getItem('token');
-      const baseUrl = process.env.REACT_APP_API_URL || 'https://multi-utility-ai-chatbot-1.onrender.com';
+      const baseUrl = process.env.REACT_APP_API_URL || '/api';
 
       console.log('[DEBUG] getAIResponse called with:', { userMessage, hasImage: !!imageData, token: !!token, baseUrl });
 

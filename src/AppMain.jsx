@@ -179,7 +179,7 @@ export default function AppMain({ darkMode, setDarkMode }) {
         formData.append('image', pendingImage.dataUrl);
         formData.append('question', input || "What's in this image?");
         
-        const response = await axios.post("https://multi-utility-ai-chatbot-1.onrender.com/api/chat/image", formData, {
+        const response = await axios.post("/api/chat/image", formData, {
           headers: { 
             'Authorization': `Bearer ${localStorage.getItem("token")}`,
             'Content-Type': 'multipart/form-data'
@@ -189,7 +189,7 @@ export default function AppMain({ darkMode, setDarkMode }) {
         setPendingImage(null);
       } else if (input.trim()) {
         // For text, send to backend
-        const response = await axios.post("https://multi-utility-ai-chatbot-1.onrender.com/api/chat", 
+        const response = await axios.post("/api/chat", 
           { message: input },
           { headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` } }
         );
