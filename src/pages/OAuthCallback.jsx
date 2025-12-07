@@ -25,10 +25,10 @@ export default function OAuthCallback() {
 
         if (pathname.includes("google")) {
           provider = "google";
-          endpoint = "http://localhost:5000/api/auth/google/callback";
+          endpoint = "https://multi-utility-ai-chatbot-1.onrender.com/api/auth/google/callback";
         } else if (pathname.includes("github")) {
           provider = "github";
-          endpoint = "http://localhost:5000/api/auth/github/callback";
+          endpoint = "https://multi-utility-ai-chatbot-1.onrender.com/api/auth/github/callback";
         }
 
         setMessage(`Processing ${provider} login...`);

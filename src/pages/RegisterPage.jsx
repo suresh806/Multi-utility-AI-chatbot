@@ -59,7 +59,7 @@ export default function RegisterPage() {
     setError("");
 
     try {
-      await axios.post("http://localhost:5000/api/auth/register", {
+      await axios.post("https://multi-utility-ai-chatbot-1.onrender.com/api/auth/register", {
         username: formData.username.toLowerCase(),
         email: formData.email,
         password: formData.password
