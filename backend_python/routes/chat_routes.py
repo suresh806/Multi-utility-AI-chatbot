@@ -98,8 +98,15 @@ def send_message():
         if not message:
             return jsonify({'error': 'Message cannot be empty'}), 400
         
+        print(f"[DEBUG] User {user_id} sent message: {message[:50]}...")
+        
         # Get AI response
+        print(f"[DEBUG] Calling get_ai_response...")
         reply = get_ai_response(message)
+        print(f"[DEBUG] Got reply: {reply[:100] if reply else 'EMPTY'}...")
+        
+        if not reply:
+            return jsonify({'error': 'Failed to get AI response - API may be unavailable'}), 500
         
         return jsonify({
             'message': message,
@@ -108,6 +115,8 @@ def send_message():
         }), 200
     except Exception as e:
         print(f"[ERROR] Chat endpoint error: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return jsonify({'error': f'Chat error: {str(e)}'}), 500
 
 @bp.route('/image', methods=['POST'])
