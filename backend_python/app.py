@@ -52,7 +52,13 @@ def before_request():
 @app.route('/health', methods=['GET'])
 def health():
     """Health check endpoint"""
-    return jsonify({'status': 'ok', 'message': 'Flask AI Chat API is running'}), 200
+    from utils.ai_service import GEMINI_READY
+    return jsonify({
+        'status': 'ok',
+        'message': 'Flask AI Chat API is running',
+        'gemini_ready': GEMINI_READY,
+        'api_key_exists': bool(os.getenv('GEMINI_API_KEY'))
+    }), 200
 
 @app.errorhandler(404)
 def not_found(error):
