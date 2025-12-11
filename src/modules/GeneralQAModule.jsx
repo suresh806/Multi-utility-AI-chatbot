@@ -187,12 +187,12 @@ export default function GeneralQAModule({ darkMode = false }) {
         formData.append('image', imageBase64);
         formData.append('question', userMessage || "What's in this image?");
 
-        console.log('[DEBUG] Sending image request to:', `${baseUrl}/api/chat/image`);
+        console.log('[DEBUG] Sending image request to:', `${baseUrl}/chat/image`);
         console.log('[DEBUG] Image data length:', imageBase64.length);
         console.log('[DEBUG] Question:', userMessage);
         
         try {
-          const res = await axios.post(`${baseUrl}/api/chat/image`, formData, {
+          const res = await axios.post(`${baseUrl}/chat/image`, formData, {
             headers: {
               Authorization: `Bearer ${token}`
             },
@@ -215,8 +215,8 @@ export default function GeneralQAModule({ darkMode = false }) {
         }
       }
 
-      console.log('[DEBUG] Sending text request to:', `${baseUrl}/api/chat`);
-      const res = await axios.post(`${baseUrl}/api/chat`, { message: userMessage }, {
+      console.log('[DEBUG] Sending text request to:', `${baseUrl}/chat`);
+      const res = await axios.post(`${baseUrl}/chat`, { message: userMessage }, {
         headers: { Authorization: `Bearer ${token}` },
         timeout: 30000 // 30 second timeout
       });
