@@ -42,6 +42,16 @@ export default function EntertainmentModule({ darkMode = false }) {
   const [quote, setQuote] = React.useState('');
   const [currentRiddle, setCurrentRiddle] = React.useState(null);
   const [riddleScore, setRiddleScore] = React.useState(0);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 384);
+  
+  // Check for mobile screen on resize
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 384);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   // Memory Game
   const [memoryCards, setMemoryCards] = React.useState([]);
@@ -212,7 +222,7 @@ export default function EntertainmentModule({ darkMode = false }) {
       {activeTab === 'home' && (
         <div>
           <h4 style={{ fontWeight: 'bold', marginBottom: '1.5rem', color: darkMode ? '#e8f0ff' : '#333' }}>Pick an activity:</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
             <div onClick={() => setActiveTab('jokes')} style={{ background: 'linear-gradient(135deg, #667eea, #764ba2)', color: 'white', padding: '1.5rem', borderRadius: '12px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}><div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>😂</div><h6 style={{ marginBottom: 0 }}>Jokes & Quotes</h6></div>
             <div onClick={() => setActiveTab('riddles')} style={{ background: 'linear-gradient(135deg, #f5a623, #f78c3d)', color: 'white', padding: '1.5rem', borderRadius: '12px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 4px 12px rgba(245, 166, 35, 0.3)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}><div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🧩</div><h6 style={{ marginBottom: 0 }}>Riddles</h6></div>
             <div onClick={() => setActiveTab('memory')} style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: 'white', padding: '1.5rem', borderRadius: '12px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}><div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🧠</div><h6 style={{ marginBottom: 0 }}>Memory Game</h6></div>
@@ -223,7 +233,7 @@ export default function EntertainmentModule({ darkMode = false }) {
       )}
 
       {activeTab === 'jokes' && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           <div style={{ background: darkMode ? '#1f2d42' : 'white', padding: '2rem', borderRadius: '12px', boxShadow: darkMode ? '0 2px 12px rgba(0,0,0,0.3)' : '0 2px 12px rgba(0,0,0,0.08)' }}>
             <h5 style={{ fontWeight: 'bold', marginBottom: '1rem', color: darkMode ? '#e8f0ff' : '#333' }}>😂 Jokes</h5>
             <button onClick={getJoke} style={{ width: '100%', padding: '1rem', background: 'linear-gradient(135deg, #667eea, #764ba2)', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', marginBottom: '1rem', fontWeight: 'bold', transition: 'all 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)'} onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}>🔄 Get Joke</button>
@@ -294,7 +304,7 @@ export default function EntertainmentModule({ darkMode = false }) {
             </div>
           ) : null}
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '0.3rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(5, 1fr)' : 'repeat(6, 1fr)', gap: '0.3rem', marginBottom: '1rem' }}>
             {['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'].map(letter => (
               <button key={letter} onClick={() => handleHangmanGuess(letter)} disabled={hangmanGuesses.includes(letter) || hangmanGameOver || hangmanWon} style={{ padding: '0.35rem', background: hangmanGuesses.includes(letter) ? darkMode ? '#0a0e27' : '#e5e7eb' : '#667eea', color: darkMode && !hangmanGuesses.includes(letter) ? 'white' : darkMode ? '#6b7280' : '#333', border: 'none', borderRadius: '3px', cursor: hangmanGuesses.includes(letter) || hangmanGameOver || hangmanWon ? 'not-allowed' : 'pointer', fontWeight: 'bold', fontSize: '0.65rem', opacity: hangmanGuesses.includes(letter) ? 0.5 : 1, minHeight: '26px' }}>
                 {letter}
@@ -309,7 +319,7 @@ export default function EntertainmentModule({ darkMode = false }) {
       {activeTab === 'speed' && (
         <div style={{ background: darkMode ? '#1f2d42' : 'white', padding: '1rem', borderRadius: '12px', boxShadow: darkMode ? '0 2px 12px rgba(0,0,0,0.3)' : '0 2px 12px rgba(0,0,0,0.08)', maxWidth: '380px', margin: '0 auto', overflow: 'hidden' }}>
           <h5 style={{ fontWeight: 'bold', color: darkMode ? '#e8f0ff' : '#333', marginBottom: '1rem', fontSize: '0.95rem' }}>⚡ Speed Game</h5>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1rem' }}>
             <div style={{ background: darkMode ? '#0a0e27' : '#f3f4f6', padding: '0.6rem', borderRadius: '6px', textAlign: 'center' }}>
               <p style={{ fontSize: '0.75rem', color: darkMode ? '#a8afc7' : '#666', marginBottom: '0.2rem' }}>Score</p>
               <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#10b981', marginBottom: '0' }}>{speedScore}</p>

@@ -464,3 +464,93 @@
   background: #ff006e !important;
   border-color: #cc0056 !important;
 }
+/* ============ RESPONSIVE ENTERTAINMENT MODULE ============ */
+
+/* Small screens (384px and below) */
+@media (max-width: 384px) {
+  /* Hide game letter/button grids on very small screens */
+  div[style*="gridTemplateColumns: 'repeat(6"] {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  
+  /* Ensure memory game cards fit properly */
+  div[style*="gridTemplateColumns: 'repeat(4"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.3rem !important;
+  }
+  
+  /* Make game containers responsive */
+  div[style*="maxWidth: '380px'"] {
+    width: 100% !important;
+    padding: 0.75rem !important;
+    max-width: 100% !important;
+  }
+  
+  /* Adjust home grid to single column on very small screens */
+  div[style*="gridTemplateColumns: 'repeat(auto-fit"] {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Reduce padding for small screens */
+  div[style*="padding: '2rem'"] {
+    padding: 1rem !important;
+  }
+  
+  /* Adjust game button sizing */
+  button[style*="minHeight: '40px'"] {
+    min-height: 36px !important;
+    padding: 0.4rem !important;
+  }
+  
+  /* Make speed game numbers smaller */
+  div[style*="fontSize: '1.4rem'"] {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Extra small screens (320px - 384px) */
+@media (max-width: 360px) {
+  /* Further reduce grid columns */
+  div[style*="gridTemplateColumns: 'repeat(auto-fit"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Hangman letter grid - make 5 columns */
+  div[style*="gridTemplateColumns: 'repeat(6"] {
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0.25rem !important;
+  }
+  
+  /* Reduce emoji size for home cards */
+  div[style*="fontSize: '2.5rem'"] {
+    font-size: 2rem !important;
+  }
+  
+  /* Reduce padding further */
+  div[style*="padding: '1.5rem'"] {
+    padding: 1rem !important;
+  }
+  
+  /* Speed game grid layout */
+  div[style*="gridTemplateColumns: 'repeat(3"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* Tablet and above - ensure normal behavior */
+@media (min-width: 600px) {
+  /* Reset to normal grid layouts */
+  div[style*="gridTemplateColumns: 'repeat(6"] {
+    grid-template-columns: repeat(6, 1fr) !important;
+  }
+  
+  div[style*="gridTemplateColumns: 'repeat(4"] {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  
+  div[style*="gridTemplateColumns: 'repeat(3"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
