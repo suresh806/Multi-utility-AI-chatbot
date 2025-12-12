@@ -18,12 +18,12 @@ except ImportError:
 _GEMINI_INITIALIZED = False
 GEMINI_READY = False
 
-def initialize_gemini():
+def initialize_gemini(force_reinit=False):
     """Initialize Gemini API with API key from environment"""
     global _GEMINI_INITIALIZED, GEMINI_READY
     
-    # Only initialize once
-    if _GEMINI_INITIALIZED:
+    # Allow re-initialization if force_reinit=True (for runtime updates)
+    if _GEMINI_INITIALIZED and not force_reinit:
         return GEMINI_READY
     
     _GEMINI_INITIALIZED = True
@@ -41,7 +41,7 @@ def initialize_gemini():
     
     try:
         genai.configure(api_key=api_key)
-        print("[OK] Gemini API initialized successfully")
+        print(f"[OK] Gemini API initialized successfully with key: {api_key[:20]}...")
         GEMINI_READY = True
         return True
     except Exception as e:
@@ -289,8 +289,11 @@ def get_ai_response(user_input: str, image_data: str = None) -> str:
         return "I'm here to help! Please ask me something."
     
     # Ensure Gemini is initialized (loads .env if not yet loaded)
-    if not _GEMINI_INITIALIZED:
-        initialize_gemini()
+    global GEMINI_READY
+    if not GEMINI_READY:
+        print("[DEBUG] GEMINI_READY is False at runtime, attempting to initialize...")
+        initialize_gemini(force_reinit=True)
+        print(f"[DEBUG] After initialize attempt, GEMINI_READY = {GEMINI_READY}")
     
     print(f"\n=== GET_AI_RESPONSE CALLED ===")
     print(f"Input: {user_input[:50]}...")
