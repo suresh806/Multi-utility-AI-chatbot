@@ -37,7 +37,7 @@ const RIDDLES = [
 const HANGMAN_WORDS = ['JAVASCRIPT', 'PROGRAMMING', 'DEVELOPER', 'COMPUTER', 'ALGORITHM', 'DATABASE', 'FUNCTION', 'VARIABLE', 'INTERNET', 'SECURITY'];
 
 export default function EntertainmentModule({ darkMode = false }) {
-  const [activeTab, setActiveTab] = React.useState('home');
+  const [activeTab, setActiveTab] = React.useState('jokes');
   const [joke, setJoke] = React.useState('');
   const [quote, setQuote] = React.useState('');
   const [currentRiddle, setCurrentRiddle] = React.useState(null);
@@ -211,26 +211,12 @@ export default function EntertainmentModule({ darkMode = false }) {
       </div>
 
       <div style={{ display: 'flex', gap: '0.8rem', marginBottom: '1.5rem', borderBottom: `2px solid ${darkMode ? '#1f2d42' : '#e5e7eb'}`, paddingBottom: '1rem', overflowX: 'auto', flexWrap: 'wrap' }}>
-        <button onClick={() => setActiveTab('home')} style={tabStyle('home')}>🏠 Home</button>
         <button onClick={() => setActiveTab('jokes')} style={tabStyle('jokes')}>😂 Jokes</button>
         <button onClick={() => setActiveTab('riddles')} style={tabStyle('riddles')}>🧩 Riddles</button>
         <button onClick={() => setActiveTab('memory')} style={tabStyle('memory')}>🧠 Memory</button>
         <button onClick={() => setActiveTab('hangman')} style={tabStyle('hangman')}>📝 Hangman</button>
         <button onClick={() => setActiveTab('speed')} style={tabStyle('speed')}>⚡ Speed</button>
       </div>
-
-      {activeTab === 'home' && (
-        <div>
-          <h4 style={{ fontWeight: 'bold', marginBottom: '1.5rem', color: darkMode ? '#e8f0ff' : '#333' }}>Pick an activity:</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
-            <div onClick={() => setActiveTab('jokes')} style={{ background: 'linear-gradient(135deg, #667eea, #764ba2)', color: 'white', padding: '1.5rem', borderRadius: '12px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}><div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>😂</div><h6 style={{ marginBottom: 0 }}>Jokes & Quotes</h6></div>
-            <div onClick={() => setActiveTab('riddles')} style={{ background: 'linear-gradient(135deg, #f5a623, #f78c3d)', color: 'white', padding: '1.5rem', borderRadius: '12px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 4px 12px rgba(245, 166, 35, 0.3)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}><div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🧩</div><h6 style={{ marginBottom: 0 }}>Riddles</h6></div>
-            <div onClick={() => setActiveTab('memory')} style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: 'white', padding: '1.5rem', borderRadius: '12px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}><div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🧠</div><h6 style={{ marginBottom: 0 }}>Memory Game</h6></div>
-            <div onClick={() => setActiveTab('hangman')} style={{ background: 'linear-gradient(135deg, #06b6d4, #0891b2)', color: 'white', padding: '1.5rem', borderRadius: '12px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 4px 12px rgba(6, 182, 212, 0.3)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}><div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>📝</div><h6 style={{ marginBottom: 0 }}>Hangman</h6></div>
-            <div onClick={() => setActiveTab('speed')} style={{ background: 'linear-gradient(135deg, #ec4899, #f43f5e)', color: 'white', padding: '1.5rem', borderRadius: '12px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 4px 12px rgba(236, 72, 153, 0.3)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}><div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>⚡</div><h6 style={{ marginBottom: 0 }}>Speed Game</h6></div>
-          </div>
-        </div>
-      )}
 
       {activeTab === 'jokes' && (
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
